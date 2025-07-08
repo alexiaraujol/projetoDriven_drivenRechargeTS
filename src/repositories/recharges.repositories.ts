@@ -1,3 +1,4 @@
+import { RechargeDb } from "protocols/types";
 import db from "../database/database";
 
 
@@ -11,7 +12,7 @@ export async function insertRecharge(phone_id: number, amount: number){
 
 
 export async function getRechargesByPhoneNumber(number: string) {
-    const resultado = await db.query(`SELECT 
+    const resultado = await db.query<RechargeDb>(`SELECT 
     recharges.id AS recharge_id,
     recharges.amount AS "valorRecarga",
     recharges.created_at AS "dataRecarga",
