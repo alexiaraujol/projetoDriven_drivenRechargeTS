@@ -1,5 +1,5 @@
 import db from "../database/database";
-import { Phone, Summary } from "protocols/types";
+import { PhoneWithDetails, Summary } from "../protocols/types";
 
 
 
@@ -29,7 +29,7 @@ export async function getSummaryByDocument(document: string): Promise<Summary | 
         phones: []
     };
 
-    const phonesMap: Record<number, Phone> = {};
+    const phonesMap: Record<number, PhoneWithDetails> = {};
 
     for (const row of rows) {
         if (!phonesMap[row.phone_id]) {

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { creatPhoneswithDocumentServices, getPhonesByDocumentServices } from "../services/phones.services";
-import { CriarCliente } from "protocols/types";
+import { ClientWithPhoneInput } from "../protocols/types";
 
 
 export async function getPhones(req: Request, res: Response) {
@@ -14,7 +14,7 @@ export async function getPhones(req: Request, res: Response) {
 
 export async function postPhones(req: Request, res: Response) {
 
-    const data = req.body as CriarCliente
+    const data = req.body as ClientWithPhoneInput
 
 
     const resultado = await creatPhoneswithDocumentServices(data)

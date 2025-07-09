@@ -1,39 +1,59 @@
 
-//repository -> phoneRepository
-export type NewClient = {
-    name: string,
-    document: string
-}
 
-export type NewPhones = {
-    number: string,
-    client_id: number,
-    description: string,
-    carrier_id: number
-}
-
-
-export type CriarCliente = {
+//Dados para criar clientes + telefones;
+export type ClientWithPhoneInput = {
     name: string,
     document: string,
     number: string,
     description: string,
     carrier_id: number
-}
+};
+
+//Dados para criar um novo cliente;
+export type InsertClient = {
+    name: string,
+    document: string
+};
+//Dados para criar um novo telefone;
+export type InsertPhones = {
+    number: string,
+    client_id: number,
+    description: string,
+    carrier_id: number
+};
+
+//Dados do telefone vindo do Banco de Dados com ID; 
+export type PhonesFromDb = {
+    id: number;
+    number: string;
+    description: string;
+    name: string;
+    document: string;
+    carrier_id: string;
+};
+
+//Operadora de telefone
+export type Carrier = {
+    id: number;
+    name: string;
+};
 
 
+// telefone com detalhes 
+export type PhoneWithDetails = {
+    id: number;
+    number: string;
+    carrier: Carrier;
+    recharges: Recharge[];
+};
+
+//Recarga enviada pelo usuário; 
 export type RecargaTel = {
     phone_id: number,
     amount: number
-}
-
-
-export type Recharge = {
-    id: number;
-    value: number;
-    date: Date;
 };
 
+//Recarga que vem do banco de dados 
 export type RechargeDb = {
     id: number,
     id_phone: number,
@@ -42,35 +62,26 @@ export type RechargeDb = {
     id_client: number,
     recharge_value: number,
     recharge_date: Date
-}
-
-export type Carrier = {
-    id: number;
-    name: string;
 };
 
-export type Phone = {
+
+//recarga com o detalhe da data 
+export type Recharge = {
     id: number;
-    number: string;
-    carrier: Carrier;
-    recharges: Recharge[];
+    value: number;
+    date: Date;
 };
+
+
 
 export type Summary = {
     document: string;
-    phones: Phone[];
+    phones: PhoneWithDetails[];
 };
 
 
-export type Phones = {
-    name: string,
-    document: string,
-    number: string,
-    description: string,
-    carrier_id: number
-}
-
+//Custum err para tratamento
 export type CustomError = {
     type: string,
     message: string
-}
+};
