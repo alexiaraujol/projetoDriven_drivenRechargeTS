@@ -1,10 +1,10 @@
-import { RechargeDb } from "protocols/types";
+import { RecargaTel, RechargeDb } from "protocols/types";
 import db from "../database/database";
 
 
 
 export async function insertRecharge(phone_id: number, amount: number){
-    const resultado = await db.query(`INSERT INTO recharges ( phone_id, amount) VALUES ($1, $2)`, [phone_id, amount])
+    const resultado = await db.query<RecargaTel>(`INSERT INTO recharges ( phone_id, amount) VALUES ($1, $2)`, [phone_id, amount])
 
     
     return resultado.rows;

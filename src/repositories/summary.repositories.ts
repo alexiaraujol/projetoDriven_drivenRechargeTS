@@ -1,11 +1,11 @@
 import db from "../database/database";
-import { PhoneWithDetails, Summary } from "../protocols/types";
+import { PhoneWithDetails, Summary, SummaryfromDb } from "../protocols/types";
 
 
 
 
 export async function getSummaryByDocument(document: string): Promise<Summary | null>  {
-    const result = await db.query(
+    const result = await db.query<SummaryfromDb>(
         `SELECT 
             c.document,
             p.id as phone_id, p.number,

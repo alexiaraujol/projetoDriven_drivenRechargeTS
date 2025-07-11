@@ -14,6 +14,14 @@ export type InsertClient = {
     name: string,
     document: string
 };
+
+export type InsertClientwithDetails = {
+    id: number,
+    name: string,
+    document: string
+};
+
+
 //Dados para criar um novo telefone;
 export type InsertPhones = {
     number: string,
@@ -79,9 +87,29 @@ export type Summary = {
     phones: PhoneWithDetails[];
 };
 
+export type SummaryfromDb = {
+    document: string,
+    phone_id: number,
+    number: string,
+    carrier_id: number,
+    carrier_name:string,
+    recharge_id: number,
+    recharge_value:number,
+    recharge_date:Date
+
+}
+
 
 //Custum err para tratamento
 export type CustomError = {
     type: string,
     message: string
 };
+
+export type Document = {
+    document: string
+}
+
+export type Number = {
+    number: string
+}
