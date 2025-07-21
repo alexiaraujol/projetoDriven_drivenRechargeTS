@@ -2,6 +2,7 @@
 
 //Dados para criar clientes + telefones;
 export type ClientWithPhoneInput = {
+    id: number,
     name: string,
     document: string,
     number: string,
@@ -107,9 +108,14 @@ export type CustomError = {
 };
 
 export type Document = {
+    id:number,
     document: string
 }
 
 export type Number = {
     number: string
+}
+
+export type ClientId = {
+    id:number
 }

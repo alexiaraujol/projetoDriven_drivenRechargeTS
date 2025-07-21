@@ -1,5 +1,5 @@
 import db from "../database/database";
-import {  Document, InsertClient, InsertClientwithDetails, InsertPhones, Number, PhonesFromDb } from "../protocols/types";
+import {  ClientId, Document, InsertClient, InsertClientwithDetails, InsertPhones, Number, PhonesFromDb } from "../protocols/types";
 
 
 export async function insertClient ( {name,document}:InsertClient ): Promise<number>{
@@ -42,7 +42,7 @@ export async function getPhonesByDocumentRepository(document: string) : Promise<
 
 
 export async function findClientByDocument(document: string) {
-    const resultado = await db.query<Document>(
+    const resultado = await db.query<ClientId>(
         `SELECT id FROM client WHERE document = $1;`,
         [document]
     );
